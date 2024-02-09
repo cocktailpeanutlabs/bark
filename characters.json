@@ -1,0 +1,22 @@
+[
+    {
+        "image": "examples/library/Rogue/Rogue.jpeg",
+        "title": "Rogue",
+        "speaker": "Rogue"
+    },
+    {
+        "image": "examples/library/Maleficent/Maleficent.jpeg",
+        "title": "Maleficent",
+        "speaker": "Maleficent"
+    },
+    {
+        "image": "examples/library/Kuzco/Kuzco.jpeg",
+        "title": "Kuzco",
+        "speaker": "Kuzco"
+    },
+    {
+        "image": "examples/library/Jasper/Jasper.jpeg",
+        "title": "Jasper",
+        "speaker": "Jasper"
+    }
+]
