@@ -4,4 +4,4 @@ scipy
 pydub
 demucs
 gradio==3.40.0
-gradio-client=0.4.0
+gradio-client==0.4.0
