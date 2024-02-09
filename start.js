@@ -4,19 +4,15 @@ module.exports = {
     "method": "shell.run",
     "params": {
       "venv": "env",
+      "env": { "ALLOW_FILE_UPLOAD": "True" },
       "message": "python app.py",
       "on": [{ "event": "/http:\/\/[0-9.:]+/", "done": true }]
     }
   }, {
     "method": "local.set",
-    "params": {
-      "url": "{{input.event[0]}}"
-    }
+    "params": { "url": "{{input.event[0]}}" }
   }, {
     "method": "proxy.start",
-    "params": {
-      "uri": "{{local.url}}",
-      "name": "Local Sharing"
-    }
+    "params": { "uri": "{{local.url}}", "name": "Local Sharing" }
   }]
 }
