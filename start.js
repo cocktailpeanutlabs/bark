@@ -3,7 +3,6 @@ module.exports = {
   "run": [{
     "method": "shell.run",
     "params": {
-      "path": "app",
       "venv": "env",
       "message": "python app.py",
       "on": [{ "event": "/http:\/\/[0-9.:]+/", "done": true }]
