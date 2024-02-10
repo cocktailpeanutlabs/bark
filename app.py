@@ -27,7 +27,13 @@ with open("characters.json", "r") as file:
     ]
     
 from TTS.api import TTS
-tts = TTS("tts_models/multilingual/multi-dataset/bark", gpu=torch.cuda.is_available())
+tts = TTS("tts_models/multilingual/multi-dataset/bark")
+if torch.cuda.is_available():
+    device = "cuda"
+    tts = tts.to(device)
+elif torch.backends.mps.is_available():
+    device = "mps"
+    tts = tts.to(device)
 
 def cut_wav(input_path, max_duration):
     # Load the WAV file
