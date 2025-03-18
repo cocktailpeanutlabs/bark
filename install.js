@@ -1,27 +1,27 @@
 module.exports = async (kernel) => {
   let cmd = "{{(platform === 'darwin' ? self.cmds.darwin : (['nvidia', 'amd'].includes(gpu) ? self.cmds[platform][gpu] : self.cmds[platform].cpu))}}"
   if (kernel.gpu === 'nvidia' && kernel.gpu_model && / 50.+/.test(kernel.gpu_model)) {
-    cmd = "pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128"
+    cmd = "uv pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128"
   }
   if (kernel.platform === 'darwin') {
     if (kernel.arch === "arm64") {
-      cmd = "pip install torch torchaudio torchvision"
+      cmd = "uv pip install torch torchaudio torchvision"
     } else {
-      cmd = "pip install torch==2.1.2 torchaudio==2.1.2"
+      cmd = "uv pip install torch==2.1.2 torchaudio==2.1.2"
     }
   }
   return {
     "cmds": {
       "win32": {
-        "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "pip install torch-directml",
-        "cpu": "pip install torch torchvision torchaudio"
+        "nvidia": "uv pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
+        "amd": "uv pip install torch-directml",
+        "cpu": "uv pip install torch torchvision torchaudio"
       },
-      "darwin": "pip install torch torchvision torchaudio",
+      "darwin": "uv pip install torch torchvision torchaudio",
       "linux": {
-        "nvidia": "pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7",
-        "cpu": "pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
+        "nvidia": "uv pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
+        "amd": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7",
+        "cpu": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
       }
     },
     "requires": [
@@ -34,7 +34,7 @@ module.exports = async (kernel) => {
         "venv": "env",
         "message": [
           cmd,
-          "pip install -r requirements.txt"
+          "uv pip install -r requirements.txt"
         ]
       }
     }, {
