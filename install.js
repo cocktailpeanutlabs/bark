@@ -18,19 +18,6 @@ module.exports = async (kernel) => {
     } 
   }
   return {
-    "cmds": {
-      "win32": {
-        "nvidia": "uv pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "uv pip install torch-directml",
-        "cpu": "uv pip install torch torchvision torchaudio"
-      },
-      "darwin": "uv pip install torch torchvision torchaudio",
-      "linux": {
-        "nvidia": "uv pip install torch torchvision torchaudio xformers --index-url https://download.pytorch.org/whl/cu121",
-        "amd": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.7",
-        "cpu": "uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu"
-      }
-    },
     "requires": [
       { "platform": "darwin", "type": "brew", "name": "mecab" },
       { "type": "conda", "name": "ffmpeg", "args": "-c conda-forge" }
